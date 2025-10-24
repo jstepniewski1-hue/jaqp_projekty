@@ -56,3 +56,21 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    
+    
+    
+    class Osoba(models.Model):
+        PLEC_WYBOR = (
+            ("K", "kobieta"),
+            ("M", "mezczyzna"),
+            ("I", "inna")
+        )
+        imie = models.CharField(max_length= 50, null = False, blank = False)
+        nazwisko = models.CharField(max_length= 100, null = False, blank = False)
+        plec = models.CharField(max_length=1, choices = PLEC_WYBOR, default="I")
+        stanowisko = models.ForeignKey('Stanowisko', on_delete = models.CASCADE)
+
+    class Stanowisko(models.Model):
+        nazwa = models.CharField(max_length = 70, null = False,blank = False)
+        opis = models.TextField(null = True, blank= True) # moze miec wartosc pusta i jest opcjonalne nie trzeba wpisywac w fomrularzu
+
