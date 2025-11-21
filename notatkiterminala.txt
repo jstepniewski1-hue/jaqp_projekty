@@ -176,3 +176,32 @@ For more information on production servers see: https://docs.djangoproject.com/e
 [17/Oct/2025 13:23:49] "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
 [17/Oct/2025 13:23:54] "GET /admin/auth/group/ HTTP/1.1" 200 7733
 [17/Oct/2025 13:23:54] "GET /admin/jsi18n/ HTTP/1.1" 200 3342      
+
+(venv) C:\Users\jstepni2\Desktop\nowyfolder\jaqp_projekty\projekt\projekt>python manage.py makemigrations
+Migrations for 'biblioteka':
+  biblioteka\migrations\0003_osoba_data_dodania_alter_osoba_plec.py
+    + Add field data_dodania to osoba
+    ~ Alter field plec on osoba
+
+(venv) C:\Users\jstepni2\Desktop\nowyfolder\jaqp_projekty\projekt\projekt>
+
+(venv) C:\Users\jstepni2\Desktop\nowyfolder\jaqp_projekty\projekt\projekt>python manage.py migrate       
+Operations to perform:
+  Apply all migrations: admin, auth, biblioteka, contenttypes, sessions
+Running migrations:
+  Applying biblioteka.0003_osoba_data_dodania_alter_osoba_plec... OK
+
+(venv) C:\Users\jstepni2\Desktop\nowyfolder\jaqp_projekty\projekt\projekt>
+
+(venv) C:\Users\jstepni2\Desktop\nowyfolder\jaqp_projekty\projekt\projekt>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+November 07, 2025 - 13:18:46
+Django version 5.2.7, using settings 'projekt.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/5.2/howto/deployment/
