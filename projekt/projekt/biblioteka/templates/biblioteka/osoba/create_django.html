@@ -1,0 +1,14 @@
+{% extends "biblioteka\base.html" %}
+
+{% block title %}Dodaj nową osobę{% endblock %}
+
+{% block content %}
+<h1>Dodaj nową osobę</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Zapisz</button>
+</form>
+<hr>
+{% endblock %}

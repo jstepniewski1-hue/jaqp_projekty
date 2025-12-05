@@ -1,0 +1,17 @@
+{% extends "biblioteka\base.html" %}
+
+{% block title %}{{ osoba.imie }} {{ osoba.nazwisko }}{% endblock %}
+
+{% block content %}
+<p>Osoba: {{ osoba.imie }} {{ osoba.nazwisko }}</p>
+<p>Płeć: {{ osoba.plec }}</p>
+<p>Data dodania: {{ osoba.data_dodania }}</p>
+<p>Stanowisko: {{ osoba.stanowisko }}</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć tę osobę?');">
+        Usuń osobę
+    </button>
+</form>
+<hr>
+{% endblock %}
