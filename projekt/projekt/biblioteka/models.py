@@ -77,7 +77,16 @@ class Osoba(models.Model):
     
     class Meta:
         ordering = ["nazwisko"]
+        
+
+        permissions = [
+            ("change_osoba_owner", "Pozwala przypisać inną osobę do obiektu Osoba."),
+            ("change_assign_to_stanowisko", "Pozwala przypisać osobę do innego stanowiska."),
+        ]
     
 class Stanowisko(models.Model):
     nazwa = models.CharField(max_length = 70, null = False, blank = False)
     opis = models.TextField(null = True, blank = True)
+
+
+

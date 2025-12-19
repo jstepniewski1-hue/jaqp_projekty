@@ -14,5 +14,8 @@ urlpatterns = [
     path("html/osoby/dodaj_django/", views.osoba_create_django_form, name="osoba-create-django"),
     path('login/', views.user_login, name='user-login'),
     path('logout/', views.user_logout, name='user-logout'),
+    path("osoby/<int:pk>/permisje/", views.osoba_view),
+    path("osoby/<int:pk>/permisje_decorator/", views.osoba_view_decorator),
+    
     
 ]

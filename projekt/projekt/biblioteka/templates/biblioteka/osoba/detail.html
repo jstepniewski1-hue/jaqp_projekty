@@ -15,3 +15,11 @@
 </form>
 <hr>
 {% endblock %}
+{% if perms.biblioteka.delete_osoba %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć tę osobę?');">
+            Usuń osobę
+        </button>
+    </form>
+{% endif %}

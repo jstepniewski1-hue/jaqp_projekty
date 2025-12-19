@@ -15,6 +15,7 @@ from django.http import Http404, HttpResponse
 from .models import Osoba
 from .forms import OsobaForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
 
 
@@ -183,3 +184,26 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('user-login')
+
+from django.core.exceptions import PermissionDenied
+
+@login_required(login_url='user-login')
+def osoba_view(request, pk):
+    if not request.user.has_perm('biblioteka.view_osoba'):
+        raise PermissionDenied()
+    try:
+        osoba = Osoba.objects.get(pk=pk)
+        return HttpResponse(f"Ten użytkownik nazywa się {osoba.imie} {osoba.nazwisko}")
+    except Osoba.DoesNotExist:
+        return HttpResponse(f"W bazie nie ma użytkownika o id={pk}.")
+    
+    from django.contrib.auth.decorators import permission_required
+
+@login_required(login_url='user-login')
+@permission_required('biblioteka.view_osoba', raise_exception=True)
+def osoba_view_decorator(request, pk):
+    try:
+        osoba = Osoba.objects.get(pk=pk)
+        return HttpResponse(f"Ten użytkownik nazywa się {osoba.imie} {osoba.nazwisko}")
+    except Osoba.DoesNotExist:
+        return HttpResponse(f"W bazie nie ma użytkownika o id={pk}.")
